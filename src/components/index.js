@@ -32,7 +32,7 @@ function updateStructure(rec1,rec2){
         height2 = height2.slice(0,-1); height2 = height2.slice(0,-1);
         height2 = Number(height2);
         
-        if( (top1 > top2) && (left1 > left2) && (height2 > height1) && (width2 > width1) ){
+        if(top1 > top2 && left1 > left2 && height2+top2 > height1+top1 && width2+left2 > width1+left1){
             return {
                 top: rec2.top,
                 left: rec2.left,
@@ -41,12 +41,12 @@ function updateStructure(rec1,rec2){
                     children: [{
                     top: `${top1-top2}px`,
                     left: `${left1-left2}px`,
-                    width: `${width1-width2}px`,
-                    height: `${height1-height2}px`,
+                    width: `${width2-width1}px`,
+                    height: `${height2-height1}px`,
                     children: []
                 }]
             }
-        }else if((top1 <= top2) && (left1 <= left2) && (height2 <= height1) && (width2 <= width1) ){
+        }else if(top1 <= top2 && left1 <= left2 && (top2+height2) <= (top1+height1) && (left2 + width2) <= (left1 + width1)){
             return {
                 top: rec1.top,
                 left: rec1.left,
@@ -55,8 +55,8 @@ function updateStructure(rec1,rec2){
                     children: [{
                     top: `${top2-top1}px`,
                     left: `${left2-left1}px`,
-                    width: `${width2-width1}px`,
-                    height:`${height2-height1}px`,
+                    width: `${width1-width2}px`,
+                    height: `${height2-height1}px`,
                     children: []
                 }]
             }
