@@ -41,8 +41,8 @@ function updateStructure(rec1,rec2){
                     children: [{
                     top: `${top1-top2}px`,
                     left: `${left1-left2}px`,
-                    width: rec1.width,
-                    height: rec1.height,
+                    width: `${width1-width2}px`,
+                    height: `${height1-height2}px`,
                     children: []
                 }]
             }
@@ -55,8 +55,8 @@ function updateStructure(rec1,rec2){
                     children: [{
                     top: `${top2-top1}px`,
                     left: `${left2-left1}px`,
-                    width: rec2.width,
-                    height: rec2.height,
+                    width: `${width2-width1}px`,
+                    height:`${height2-height1}px`,
                     children: []
                 }]
             }
